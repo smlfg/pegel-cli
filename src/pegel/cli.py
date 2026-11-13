@@ -8,6 +8,7 @@ import sys
 from . import __version__, client
 from .cmd_stand import run as run_stand
 from .cmd_suche import run as run_suche
+from .cmd_verlauf import run as run_verlauf
 from .output import AmbiguousStations, emit_json
 
 
@@ -65,6 +66,30 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_json(stand)
     stand.set_defaults(func=run_stand)
+
+    verlauf = subparsers.add_parser(
+        "verlauf",
+        help="Verlauf der letzten Tage mit Minimum und Maximum",
+        description=(
+            "Ruft die Messwerte der letzten N Tage (1 bis 30, Standard 1) "
+            "ab und zeigt Minimum, Maximum und aktuellen Wert."
+        ),
+    )
+    verlauf.add_argument("ort", metavar="ORT", help="Orts- oder Suchbegriff")
+    verlauf.add_argument(
+        "--tage",
+        type=int,
+        default=1,
+        metavar="N",
+        help="Zeitraum in Tagen, 1 bis 30 (Standard: 1)",
+    )
+    verlauf.add_argument(
+        "--erster",
+        action="store_true",
+        help="Bei mehreren Treffern ohne Terminal den ersten Pegel verwenden",
+    )
+    _add_json(verlauf)
+    verlauf.set_defaults(func=run_verlauf)
 
     return parser
 
