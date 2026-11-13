@@ -53,7 +53,7 @@ die UX-Fixture ist für die Sitzung auf 5 Pegel gekürzt. Das ist kein Fehler.
 | 35 | Auto-JSON bei Pipe | `pegel suche Mannheim` in Pipe | JSON ohne `--json` | OK | Ausgabe beginnt mit `{"befehl":"suche",…}` |
 | 36 | Mehrdeutig / `--erster` | `pegel stand Mannheim`, dann `--erster` | Exit 2 + Treffer; `--erster` Exit 0 | OK | Fehler-JSON mit 2 Treffern; `--erster` wählt MANNHEIM |
 | 37 | TTY-Auswahl | `pegel stand Mannheim` mit 2, 9, EOF | gültig Exit 0; sonst Exit 2 | OK | 2 -> Mannheim Neckar; 9/EOF -> Meldung + nächster Schritt |
-| 38 | Strg+C bei Auswahl | pty sendet SIGINT direkt nach `Auswahl [1-2]:` | Exit 130 | FAIL | Exit 2, „Keine Auswahl getroffen.“; kein Traceback. Details in `scratch/QA-FAILS.md` |
+| 38 | Strg+C bei Auswahl | pty sendet SIGINT direkt nach `Auswahl [1-2]:` | Exit 130 | OK (nach Fix de9bbbe) | `returncode=130`, „Abgebrochen.“ + „Nächster Schritt: …“, kein Traceback; Log `scratch/qa/38-ctrlc-fix.log` |
 | 39 | `--tage` ungültig | `--tage 0`, `--tage 31`, `--tage abc` | Exit 2, nächster Schritt | OK | 0/31 mit Bereichsfehler; abc mit JSON `Ungültige Eingabe.` |
 | 40 | Usage-Fehler | `pegel`, `pegel quatsch --json`, `pegel stand --json` | Exit 2, JSON valide | OK | JSON-Fehler auf stdout, Usage auf stderr |
 | 41 | Pipe-Abbruch | Ausgabe von `pegel fluss Neckar` an `head -1` | Exit 0, kein Traceback | OK | PIPESTATUS 0 0; stderr leer |
@@ -65,18 +65,22 @@ die UX-Fixture ist für die Sitzung auf 5 Pegel gekürzt. Das ist kein Fehler.
 
 ## Zählung
 
-- OK: 45
-- FAIL: 1
+- OK: 46
+- FAIL: 0
 - Gesamt: 46
+
+## Nachprüfung
+
+- **Nr. 38 – Strg+C bei der Pegel-Auswahl:** behoben in Commit `de9bbbe`
+  (`fix: Strg+C bei der Pegel-Auswahl mit Exit 130 beenden`). Die Auswahl
+  reicht `KeyboardInterrupt` jetzt an die zentrale Fehlerbehandlung weiter;
+  der pty-Befehl `python3 scratch/qa/ctrlc_probe.py` endet live mit
+  `returncode=130` und ohne Traceback. Danach `pytest -q` -> `62 passed`,
+  `ux_check.py .` und `ux_session.py .` -> jeweils PASS (Exit 0).
 
 ## Offene FAILs
 
-1. **Nr. 38 – Strg+C bei der Pegel-Auswahl liefert Exit 2 statt 130.**
-   Erwartet laut README/INTERFACE: Abbruch mit Strg+C = Exit 130. Tatsächlich
-   fängt die Auswahl die Unterbrechung als Usage-Fehler ab und beendet mit
-   Exit 2. Es gibt keinen Traceback und die Meldung nennt einen nächsten
-   Schritt; nur der Exit-Code weicht ab. Reproduktion und Ausgabe stehen in
-   `scratch/QA-FAILS.md`. Gemäß QA-Rolle wurde der Code nicht geändert.
+Keine.
 
 ## Weitere Hinweise
 
