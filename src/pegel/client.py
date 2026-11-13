@@ -265,7 +265,7 @@ def stations_by_fuzzy(term: str) -> list[Station]:
     payload = get_json(
         "/stations.json",
         [
-            ("fuzzyId", term),
+            ("fuzzyId", term.lower()),
             ("includeTimeseries", "true"),
             ("includeCurrentMeasurement", "true"),
         ],
