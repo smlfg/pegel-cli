@@ -7,6 +7,7 @@ import sys
 
 from . import __version__, client
 from .cmd_fluss import run as run_fluss
+from .cmd_kennwerte import run as run_kennwerte
 from .cmd_stand import run as run_stand
 from .cmd_suche import run as run_suche
 from .cmd_verlauf import run as run_verlauf
@@ -108,6 +109,23 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_json(fluss)
     fluss.set_defaults(func=run_fluss)
+
+    kennwerte = subparsers.add_parser(
+        "kennwerte",
+        help="MNW, MW, MHW, HSW und GlW eines Pegels zeigen",
+        description=(
+            "Zeigt die Kennwerte MNW, MW, MHW, HSW und – falls vorhanden – "
+            "GlW sowie den aktuellen Wasserstand."
+        ),
+    )
+    kennwerte.add_argument("ort", metavar="ORT", help="Orts- oder Suchbegriff")
+    kennwerte.add_argument(
+        "--erster",
+        action="store_true",
+        help="Bei mehreren Treffern ohne Terminal den ersten Pegel verwenden",
+    )
+    _add_json(kennwerte)
+    kennwerte.set_defaults(func=run_kennwerte)
 
     return parser
 
