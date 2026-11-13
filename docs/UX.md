@@ -8,7 +8,7 @@ keinen Login und keine schreibende Aktion.
 {"tool": "pegel",
  "install": "pipx install git+https://github.com/smlfg/pegel-cli",
  "base_url_env": "PEGEL_BASE_URL",
- "env": {}}
+ "env": {"PEGEL_HEUTE": "2026-11-13"}}
 ```
 
 ## Sitzungen
