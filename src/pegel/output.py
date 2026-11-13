@@ -113,7 +113,7 @@ def select_station(
     sys.stderr.flush()
     try:
         answer = sys.stdin.readline()
-    except (EOFError, KeyboardInterrupt):
+    except EOFError:
         raise client.UsageError(
             "Keine Auswahl getroffen.",
             "Erneut starten und eine Nummer eingeben oder `--erster` verwenden",

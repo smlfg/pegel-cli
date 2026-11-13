@@ -159,3 +159,37 @@ def test_select_station_invalid_choice(monkeypatch) -> None:
     with pytest.raises(client.UsageError) as excinfo:
         select_station(stations, "Mannheim", json_mode=False, erster=False)
     assert excinfo.value.exit_code == 2
+
+
+class _InterruptingInput:
+    def isatty(self) -> bool:
+        return True
+
+    def readline(self) -> str:
+        raise KeyboardInterrupt
+
+
+def test_select_station_keyboard_interrupt_propagates(monkeypatch) -> None:
+    import sys
+
+    stations = client.parse_stations(_stations("stations_mannheim.json"))
+    monkeypatch.setattr(sys, "stdin", _InterruptingInput())
+    monkeypatch.setattr("sys.stdout.isatty", lambda: True)
+    with pytest.raises(KeyboardInterrupt):
+        select_station(stations, "Mannheim", json_mode=False, erster=False)
+
+
+def test_main_keyboard_interrupt_during_selection(monkeypatch, capsys) -> None:
+    import sys
+
+    from pegel.cli import main
+
+    stations = client.parse_stations(_stations("stations_mannheim.json"))
+    monkeypatch.setattr(client, "stations_by_fuzzy", lambda term: stations)
+    monkeypatch.setattr(sys, "stdin", _InterruptingInput())
+    monkeypatch.setattr("sys.stdout.isatty", lambda: True)
+    code = main(["stand", "Mannheim"])
+    assert code == 130
+    captured = capsys.readouterr()
+    assert "Traceback" not in captured.out + captured.err
+    assert "Abgebrochen." in captured.err
