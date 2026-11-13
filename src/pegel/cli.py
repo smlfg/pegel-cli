@@ -6,6 +6,7 @@ import argparse
 import sys
 
 from . import __version__, client
+from .cmd_stand import run as run_stand
 from .cmd_suche import run as run_suche
 from .output import AmbiguousStations, emit_json
 
@@ -47,6 +48,23 @@ def build_parser() -> argparse.ArgumentParser:
     suche.add_argument("ort", metavar="ORT", help="Orts- oder Suchbegriff")
     _add_json(suche)
     suche.set_defaults(func=run_suche)
+
+    stand = subparsers.add_parser(
+        "stand",
+        help="Aktuellen Wasserstand mit Einordnung und Trend zeigen",
+        description=(
+            "Zeigt den aktuellen Wasserstand, die Einordnung nach MNW/MHW "
+            "und NSW/HSW sowie den Trend der letzten drei Stunden."
+        ),
+    )
+    stand.add_argument("ort", metavar="ORT", help="Orts- oder Suchbegriff")
+    stand.add_argument(
+        "--erster",
+        action="store_true",
+        help="Bei mehreren Treffern ohne Terminal den ersten Pegel verwenden",
+    )
+    _add_json(stand)
+    stand.set_defaults(func=run_stand)
 
     return parser
 
