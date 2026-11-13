@@ -8,6 +8,7 @@ import sys
 from . import __version__, client
 from .cmd_fluss import run as run_fluss
 from .cmd_kennwerte import run as run_kennwerte
+from .cmd_watch import run as run_watch
 from .cmd_stand import run as run_stand
 from .cmd_suche import run as run_suche
 from .cmd_verlauf import run as run_verlauf
@@ -126,6 +127,31 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_json(kennwerte)
     kennwerte.set_defaults(func=run_kennwerte)
+
+    watch = subparsers.add_parser(
+        "watch",
+        help="Änderung seit dem letzten Aufruf und Schwelle prüfen",
+        description=(
+            "Speichert den zuletzt gesehenen Wert lokal und meldet die "
+            "Änderung sowie optional das Über- oder Unterschreiten einer Schwelle."
+        ),
+    )
+    watch.add_argument("ort", metavar="ORT", help="Orts- oder Suchbegriff")
+    threshold = watch.add_mutually_exclusive_group()
+    threshold.add_argument(
+        "--ueber",
+        type=int,
+        metavar="CM",
+        help="Obere Schwelle in Zentimetern",
+    )
+    threshold.add_argument(
+        "--unter",
+        type=int,
+        metavar="CM",
+        help="Untere Schwelle in Zentimetern",
+    )
+    _add_json(watch)
+    watch.set_defaults(func=run_watch)
 
     return parser
 
