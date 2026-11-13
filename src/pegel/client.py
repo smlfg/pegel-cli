@@ -277,7 +277,7 @@ def stations_by_water(shortname: str) -> list[Station]:
     payload = get_json(
         "/stations.json",
         [
-            ("waters", shortname),
+            ("waters", shortname.upper()),
             ("includeTimeseries", "true"),
             ("includeCurrentMeasurement", "true"),
         ],

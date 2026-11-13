@@ -6,6 +6,7 @@ import argparse
 import sys
 
 from . import __version__, client
+from .cmd_fluss import run as run_fluss
 from .cmd_stand import run as run_stand
 from .cmd_suche import run as run_suche
 from .cmd_verlauf import run as run_verlauf
@@ -90,6 +91,23 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_json(verlauf)
     verlauf.set_defaults(func=run_verlauf)
+
+    fluss = subparsers.add_parser(
+        "fluss",
+        help="Alle Pegel eines Gewässers flussabwärts auflisten",
+        description=(
+            "Löst den Gewässernamen über die PEGELONLINE-Gewässerliste auf "
+            "und listet die Pegel nach Kilometer aufsteigend."
+        ),
+    )
+    fluss.add_argument("name", metavar="NAME", help="Gewässername oder Kürzel")
+    fluss.add_argument(
+        "--nur-hoch",
+        action="store_true",
+        help="Nur Pegel mit hohem Wasserstand zeigen",
+    )
+    _add_json(fluss)
+    fluss.set_defaults(func=run_fluss)
 
     return parser
 
