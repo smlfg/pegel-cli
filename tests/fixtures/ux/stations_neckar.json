@@ -1,0 +1,157 @@
+[
+ {
+  "uuid": "25582d3f-dc5f-4c70-bd08-e84fd13201ca",
+  "number": "23800900",
+  "shortname": "Mannheim Neckar",
+  "longname": "MANNHEIM NECKAR",
+  "km": 3.1,
+  "agency": "STANDORT MANNHEIM",
+  "water": {
+   "shortname": "NECKAR",
+   "longname": "NECKAR"
+  },
+  "timeseries": [
+   {
+    "shortname": "W",
+    "longname": "WASSERSTAND ROHDATEN",
+    "unit": "cm",
+    "equidistance": 15,
+    "currentMeasurement": {
+     "timestamp": "2026-11-13T09:15:00+01:00",
+     "value": 146.0,
+     "stateMnwMhw": "unknown",
+     "stateNswHsw": "unknown"
+    },
+    "gaugeZero": {
+     "unit": "m. ü. NHN",
+     "value": 84.787,
+     "validFrom": "2017-07-18"
+    }
+   }
+  ]
+ },
+ {
+  "uuid": "48a939b9-a3cf-49f5-a804-94b45f4eb8dc",
+  "number": "23800840",
+  "shortname": "Feudenheim Schleuse UP",
+  "longname": "FEUDENHEIM SCHLEUSE UP",
+  "km": 6.1,
+  "agency": "STANDORT HEIDELBERG",
+  "water": {
+   "shortname": "NECKAR",
+   "longname": "NECKAR"
+  },
+  "timeseries": [
+   {
+    "shortname": "W",
+    "longname": "WASSERSTAND ROHDATEN",
+    "unit": "cm",
+    "equidistance": 15,
+    "currentMeasurement": {
+     "timestamp": "2026-11-13T09:15:00+01:00",
+     "value": 133.0,
+     "stateMnwMhw": "unknown",
+     "stateNswHsw": "unknown"
+    },
+    "gaugeZero": {
+     "unit": "m. ü. NHN",
+     "value": 84.95,
+     "validFrom": "2017-11-01"
+    }
+   }
+  ]
+ },
+ {
+  "uuid": "70cee7df-792f-4985-a5d3-63b704d3ee50",
+  "number": "23800820",
+  "shortname": "Ladenburg Wehr UP",
+  "longname": "LADENBURG WEHR UP",
+  "km": 11.9,
+  "agency": "STANDORT HEIDELBERG",
+  "water": {
+   "shortname": "NECKAR",
+   "longname": "NECKAR"
+  },
+  "timeseries": [
+   {
+    "shortname": "W",
+    "longname": "WASSERSTAND ROHDATEN",
+    "unit": "cm",
+    "equidistance": 15,
+    "currentMeasurement": {
+     "timestamp": "2026-11-13T09:15:00+01:00",
+     "value": 685.0,
+     "stateMnwMhw": "unknown",
+     "stateNswHsw": "unknown"
+    },
+    "gaugeZero": {
+     "unit": "m. ü. NHN",
+     "value": 84.95,
+     "validFrom": "2017-11-01"
+    }
+   }
+  ]
+ },
+ {
+  "uuid": "ec9d3a4d-029f-475e-acbf-03352252b54f",
+  "number": "23800800",
+  "shortname": "Schwabenheim Schleuse UP",
+  "longname": "SCHWABENHEIM SCHLEUSE UP",
+  "km": 17.6,
+  "agency": "STANDORT HEIDELBERG",
+  "water": {
+   "shortname": "NECKAR",
+   "longname": "NECKAR"
+  },
+  "timeseries": [
+   {
+    "shortname": "W",
+    "longname": "WASSERSTAND ROHDATEN",
+    "unit": "cm",
+    "equidistance": 15,
+    "currentMeasurement": {
+     "timestamp": "2026-11-13T09:15:00+01:00",
+     "value": 214.0,
+     "stateMnwMhw": "unknown",
+     "stateNswHsw": "normal"
+    },
+    "gaugeZero": {
+     "unit": "m. ü. NHN",
+     "value": 94.51,
+     "validFrom": "2017-11-01"
+    }
+   }
+  ]
+ },
+ {
+  "uuid": "827b2685-47ec-44df-a90f-980f5e0c1591",
+  "number": "23800760",
+  "shortname": "Heidelberg UP",
+  "longname": "HEIDELBERG UP",
+  "km": 26.1,
+  "agency": "STANDORT HEIDELBERG",
+  "water": {
+   "shortname": "NECKAR",
+   "longname": "NECKAR"
+  },
+  "timeseries": [
+   {
+    "shortname": "W",
+    "longname": "WASSERSTAND ROHDATEN",
+    "unit": "cm",
+    "equidistance": 15,
+    "currentMeasurement": {
+     "timestamp": "2026-11-13T09:30:00+01:00",
+     "value": 208.0,
+     "stateMnwMhw": "normal",
+     "stateNswHsw": "normal"
+    },
+    "gaugeZero": {
+     "unit": "m. ü. NHN",
+     "value": 103.22,
+     "validFrom": "2017-11-01"
+    }
+   }
+  ]
+ }
+]

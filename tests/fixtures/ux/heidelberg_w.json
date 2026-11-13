@@ -1,0 +1,88 @@
+{
+ "shortname": "W",
+ "longname": "WASSERSTAND ROHDATEN",
+ "unit": "cm",
+ "equidistance": 15,
+ "currentMeasurement": {
+  "timestamp": "2026-11-13T09:30:00+01:00",
+  "value": 208.0,
+  "stateMnwMhw": "normal",
+  "stateNswHsw": "normal"
+ },
+ "gaugeZero": {
+  "unit": "m. ü. NHN",
+  "value": 103.22,
+  "validFrom": "2017-11-01"
+ },
+ "characteristicValues": [
+  {
+   "shortname": "HHW",
+   "longname": "Höchster Hochwasserstand",
+   "unit": "cm",
+   "value": 661.0,
+   "occurrences": [
+    "1993-12-22"
+   ]
+  },
+  {
+   "shortname": "MNW",
+   "longname": "Mittel der Niedrigwasserstände ",
+   "unit": "cm",
+   "value": 207.0,
+   "timespanStart": "2010-11-01",
+   "timespanEnd": "2020-10-31"
+  },
+  {
+   "shortname": "NW",
+   "longname": "Niedrigster Tageswasserstand ",
+   "unit": "cm",
+   "value": 199.0,
+   "occurrences": [
+    "2017-01-25"
+   ],
+   "timespanStart": "2010-11-01",
+   "timespanEnd": "2020-10-31"
+  },
+  {
+   "shortname": "ZS_I",
+   "longname": "Stauziel I im Oberwasser einer Staustufe (Normalstau)",
+   "unit": "cm",
+   "value": 200.0,
+   "validFrom": "2004-01-01"
+  },
+  {
+   "shortname": "MW",
+   "longname": "Mittel der Tageswasserstände ",
+   "unit": "cm",
+   "value": 220.0,
+   "timespanStart": "2010-11-01",
+   "timespanEnd": "2020-10-31"
+  },
+  {
+   "shortname": "MHW",
+   "longname": "Mittel der Hochwasserstände ",
+   "unit": "cm",
+   "value": 401.0,
+   "timespanStart": "2010-11-01",
+   "timespanEnd": "2020-10-31"
+  },
+  {
+   "shortname": "HSW",
+   "longname": "höchster Schifffahrtswasserstand",
+   "unit": "cm",
+   "value": 260.0,
+   "validFrom": "2003-01-13"
+  },
+  {
+   "shortname": "HW",
+   "longname": "Höchster Momentanwasserstand ",
+   "unit": "cm",
+   "value": 531.0,
+   "occurrences": [
+    "2013-06-02"
+   ],
+   "timespanStart": "2010-11-01",
+   "timespanEnd": "2020-10-31"
+  }
+ ]
+}

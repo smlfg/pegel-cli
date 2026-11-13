@@ -1,0 +1,33 @@
+[
+ {
+  "uuid": "827b2685-47ec-44df-a90f-980f5e0c1591",
+  "number": "23800760",
+  "shortname": "Heidelberg UP",
+  "longname": "HEIDELBERG UP",
+  "km": 26.1,
+  "agency": "STANDORT HEIDELBERG",
+  "water": {
+   "shortname": "NECKAR",
+   "longname": "NECKAR"
+  },
+  "timeseries": [
+   {
+    "shortname": "W",
+    "longname": "WASSERSTAND ROHDATEN",
+    "unit": "cm",
+    "equidistance": 15,
+    "currentMeasurement": {
+     "timestamp": "2026-11-13T09:30:00+01:00",
+     "value": 208.0,
+     "stateMnwMhw": "normal",
+     "stateNswHsw": "normal"
+    },
+    "gaugeZero": {
+     "unit": "m. ü. NHN",
+     "value": 103.22,
+     "validFrom": "2017-11-01"
+    }
+   }
+  ]
+ }
+]
